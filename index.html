@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Number Submission</title>
+    <link rel="stylesheet" href="mobile.css">
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="https://www.seedsfincap.com/ResourceOne/image/logo/logo.png" alt="Logo">
+        </div>
+        <h2>Submit Mobile Number</h2>
+        <form id="mobileForm">
+            <label for="mobileNumber">Mobile Number:</label>
+            <input type="text" id="mobileNumber" name="mobileNumber" required>
+            <button type="submit">Submit</button>
+        </form>
+        <div id="response"></div>
+    </div>
+
+
+    <style>
+        /* Basic reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: url('https://blogassets.airtel.in/wp-content/uploads/2022/03/Beginners-guide-on-how-to-send-SMS-free.jpg') no-repeat center center fixed; 
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+.container {
+    background: rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 90%;
+    max-width: 400px;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    margin-bottom: 10px;
+}
+
+input[type="text"] {
+    padding: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #72b8f1;
+}
+
+#response {
+    margin-top: 20px;
+}
+
+.logo {
+    margin-bottom: 20px;
+}
+
+.logo img {
+    max-width: 100px;
+}
+
+/* Toast styles */
+#toast {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+}
+
+#toast.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+#toast.success {
+    background-color: green;
+}
+
+#toast.error {
+    background-color: red;
+}
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+
+    </style>
+
+    <div id="toast"></div>
+
+    <script>
+        document.getElementById('mobileForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const mobileNumber = document.getElementById('mobileNumber').value;
+            const ukey = 'CtwPQ7bNDBYBDU4298lhuco5h';
+            const language = 2;
+            const credittype = 8;
+            const senderid = 'SeedsF';
+            const templateid = 0;
+            const message = '%E0%A4%B8%E0%A5%80%E0%A4%A1%E0%A5%8D%E0%A4%B8%20%E0%A4%AB%E0%A4%BF%E0%A4%A8%E0%A4%95%E0%A5%88%E0%A4%AA%20%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%BE%E0%A4%87%E0%A4%B5%E0%A5%87%E0%A4%9F%20%E0%A4%B2%E0%A4%BF%E0%A4%AE%E0%A4%BF%E0%A4%9F%E0%A5%87%E0%A4%A1%20%E0%A4%B8%E0%A5%87%20%E0%A4%B2%E0%A5%8B%E0%A4%A8%20%E0%A4%95%E0%A5%80%20%E0%A4%87%E0%A4%95%E0%A5%8D%E0%A4%9B%E0%A4%BE%20%E0%A4%9C%E0%A4%BE%E0%A4%B9%E0%A4%BF%E0%A4%B0%20%E0%A4%95%E0%A4%B0%E0%A4%A8%E0%A5%87%20%E0%A4%95%E0%A5%87%20%E0%A4%B2%E0%A4%BF%E0%A4%8F%20%E0%A4%A7%E0%A4%A8%E0%A5%8D%E0%A4%AF%E0%A4%B5%E0%A4%BE%E0%A4%A6%2C%20%E0%A4%B2%E0%A5%8B%E0%A4%A8%20%E0%A4%95%E0%A5%80%20%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%95%E0%A5%8D%E0%A4%B0%E0%A4%BF%E0%A4%AF%E0%A4%BE%20%E0%A4%95%E0%A5%8B%20%E0%A4%AA%E0%A5%8D%E0%A4%B0%E0%A4%BE%E0%A4%B0%E0%A4%AE%E0%A5%8D%E0%A4%AD%20%E0%A4%95%E0%A4%B0%E0%A4%A8%E0%A5%87%20%E0%A4%95%E0%A5%87%20%E0%A4%B2%E0%A4%BF%E0%A4%8F%2C%20%E0%A4%A8%E0%A5%80%E0%A4%9A%E0%A5%87%20%E0%A4%A6%E0%A4%BF%E0%A4%AF%E0%A5%87%20%E0%A4%97%E0%A4%8F%20%E0%A4%B2%E0%A4%BF%E0%A4%82%E0%A4%95%20%E0%A4%AA%E0%A4%B0%20%E0%A4%85%E0%A4%AA%E0%A4%A8%E0%A5%80%20%E0%A4%9C%E0%A4%BE%E0%A4%A8%E0%A4%95%E0%A4%BE%E0%A4%B0%E0%A5%80%20%E0%A4%B8%E0%A4%BE%E0%A4%9D%E0%A4%BE%20%E0%A4%95%E0%A4%B0%E0%A5%87%20%7C%20https%3A%2F%2Fforms.gle%2FD3kaAbQejaXbXytJ6';
+            const filetype = 2;
+
+            const apiUrl = `http://125.16.147.178/VoicenSMS/webresources/CreateSMSCampaignGet?ukey=${ukey}&msisdn=${mobileNumber}&language=${language}&credittype=${credittype}&senderid=${senderid}&templateid=${templateid}&message=${encodeURIComponent(message)}&filetype=${filetype}`;
+
+            console.log('Sending request to:', apiUrl);
+
+            fetch(apiUrl, {
+                method: 'GET',
+            })
+            .then(response => {
+                console.log('Received response:', response);
+                if (!response.ok) {
+                    throw new Error('Network response was not ok: ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Response data:', data);
+                document.getElementById('response').innerText = 'Response: ' + JSON.stringify(data);
+                showToast('Message sent successfully!', 'success');
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                document.getElementById('response').innerText = 'Error: ' + error;
+                showToast('Failed to send message!', 'error');
+            });
+        });
+
+        function showToast(message, type) {
+            const toast = document.getElementById('toast');
+            toast.innerText = message;
+            toast.className = `show ${type}`;
+            setTimeout(() => {
+                toast.className = toast.className.replace(`show ${type}`, '');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
